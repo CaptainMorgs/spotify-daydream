@@ -36,13 +36,18 @@ public class Spotify : MonoBehaviour {
 
 		getContext ();
 
-		StartCoroutine (loadPlaylistsObjectsWithPrefab2 ());
+	//	StartCoroutine (loadPlaylistsObjectsWithPrefab2 ());
 
 	}
 
 	// Update is called once per frame
 	void Update () {
 	}
+
+    public FeaturedPlaylists GetFeaturedPlaylists() {
+        FeaturedPlaylists playlists = _spotify.GetFeaturedPlaylists();
+        return playlists;
+    }
 
 	public void playSong(string songID) {
 		PlaybackContext context = _spotify.GetPlayback ();	

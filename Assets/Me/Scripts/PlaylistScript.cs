@@ -9,25 +9,28 @@ using SpotifyAPI.Web.Models;
 public class PlaylistScript : MonoBehaviour {
 
 	private string playlistName, playlistURI;
-	private SimplePlaylist simplePlaylsit;
 	private GameObject spotifyManager;
 	private Spotify script;
-	private PlaybackContext playbackContext;
     public GameObject  playlistNameObject;
-    private UnityEngine.UI.Text playlistNameText;	
+    private UnityEngine.UI.Text playlistNameText;
+   // private float a;
+   // private Color c;
+    private MeshRenderer meshRenderer;
+    public GameObject spriteGameObject;
+    private SpriteRenderer spriteRenderer;
 
-	// Use this for initialization
-	void Start () {
-		spotifyManager = GameObject.Find ("SpotifyManager");
+    // Use this for initialization
+    void Start () {
+        meshRenderer = GetComponent<MeshRenderer>();
+    //    a = meshRenderer.material.color.a;
+    //    c = meshRenderer.material.GetColor("_TintColor");
+
+        spotifyManager = GameObject.Find ("SpotifyManager");
 		script = spotifyManager.GetComponent<Spotify>();
         playlistNameText = playlistNameObject.GetComponent<UnityEngine.UI.Text>();
+        spriteRenderer = spriteGameObject.GetComponent<SpriteRenderer>();
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void setPlaylistURI (string playlistURI) {
 		this.playlistURI = playlistURI;
         
@@ -40,6 +43,17 @@ public class PlaylistScript : MonoBehaviour {
     }
 
 	public void playPlaylist() {
+        Debug.Log(playlistURI);
 		script.playPlaylist (playlistURI);
 	}
+
+    public void TogglePlayButton() {
+        if (spriteRenderer.enabled == true)
+        {
+            spriteRenderer.enabled = false;
+        }
+        else {
+            spriteRenderer.enabled = true;
+        }
+    }
 }
