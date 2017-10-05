@@ -24,7 +24,9 @@ public class Spotify : MonoBehaviour {
 
 	public Image albumImage;
 
-	public GameObject quadObject, uiTextObject, uiTextAlbumNameObject;
+	public GameObject quadObject, uiTextObject, uiTextAlbumNameObject, FeaturedPlaylistTab;
+
+	private FeaturedPlaylistTabScript featuredPlaylistTabScript;
 
 	public GameObject prefab;
 
@@ -34,9 +36,9 @@ public class Spotify : MonoBehaviour {
 
 		ImplicitGrantAuth();
 
-		getContext ();
+		featuredPlaylistTabScript = FeaturedPlaylistTab.GetComponent<FeaturedPlaylistTabScript> ();
 
-	//	StartCoroutine (loadPlaylistsObjectsWithPrefab2 ());
+		StartCoroutine (featuredPlaylistTabScript.loadStuff ());
 
 	}
 

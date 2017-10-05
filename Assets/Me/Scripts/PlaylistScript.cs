@@ -10,8 +10,10 @@ public class PlaylistScript : MonoBehaviour {
 
 	private string playlistName, playlistURI;
 	private GameObject spotifyManager;
+
 	private Spotify script;
-    public GameObject  playlistNameObject;
+    public GameObject  playlistNameObject, recordPlayer;
+	private RecordPlayer recordPlayerScript;
     private UnityEngine.UI.Text playlistNameText;
    // private float a;
    // private Color c;
@@ -29,6 +31,7 @@ public class PlaylistScript : MonoBehaviour {
 		script = spotifyManager.GetComponent<Spotify>();
         playlistNameText = playlistNameObject.GetComponent<UnityEngine.UI.Text>();
         spriteRenderer = spriteGameObject.GetComponent<SpriteRenderer>();
+		recordPlayerScript = recordPlayer.GetComponent<RecordPlayer> ();
     }
 	
 	public void setPlaylistURI (string playlistURI) {
@@ -45,6 +48,7 @@ public class PlaylistScript : MonoBehaviour {
 	public void playPlaylist() {
         Debug.Log(playlistURI);
 		script.playPlaylist (playlistURI);
+		recordPlayerScript.recordPlayerActive = true;
 	}
 
     public void TogglePlayButton() {

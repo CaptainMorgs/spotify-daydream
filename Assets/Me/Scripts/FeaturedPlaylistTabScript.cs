@@ -26,7 +26,7 @@ public class FeaturedPlaylistTabScript : MonoBehaviour
         StartCoroutine(loadStuff());
     }
 
-    private IEnumerator loadStuff()
+    public IEnumerator loadStuff()
     {
         yield return new WaitForSeconds(2);
         FeaturedPlaylists featuredPlaylists = spotifyManagerScript.GetFeaturedPlaylists();
